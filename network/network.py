@@ -257,7 +257,6 @@ class ModalAwareEncoder(nn.Module):
                 ])
             )
         
-        # 添加注意力权重计算
         self.modal_attention = nn.Sequential(
             nn.AdaptiveAvgPool2d(1),
             nn.Conv2d(dim_mults[-1] * init_dim, num_inputs, 1),
