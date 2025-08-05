@@ -18,7 +18,6 @@ import importlib
 from config.get_argparser import get_argparser, NETWORK_CONFIGS
 NETWORK_CONFIGS = {
     'final': 'network.network',
-    # 可以继续添加更多网络
 }
 
 def load_network_from_config(network_key):
@@ -91,9 +90,9 @@ def set_seed(seed):
     random.seed(seed)
 def process_and_save_sample(target, recon,inputs, save_dir, batch_idx):
     """Process and save a single sample"""
-    target_np = target.squeeze().numpy()  # 从 [1, H, W] -> [H, W]
+    target_np = target.squeeze().numpy() 
     recon_np = recon.squeeze().numpy()
-    inputs_np = inputs.squeeze().numpy()  # 从 [1, C, H, W] -> [C, H, W]
+    inputs_np = inputs.squeeze().numpy()  
     available_modals_num = inputs_np.shape[0]
 
     
@@ -128,7 +127,7 @@ def process_and_save_sample(target, recon,inputs, save_dir, batch_idx):
    
 def save_all_inputs(inputs, save_dir, batch_idx):
     """Process and save a single sample"""
-    inputs_np = inputs.squeeze().numpy()  # 从 [1, C, H, W] -> [C, H, W]
+    inputs_np = inputs.squeeze().numpy()
     available_modals_num = inputs_np.shape[0]
     def normalize(img):
         img = img.astype(np.float32)
