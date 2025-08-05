@@ -138,20 +138,18 @@ class EarlyStoppingTracker:
         self.should_stop = False
         
     def update(self, current_loss):
-        """更新损失并检查是否应该早停"""
         if current_loss < self.best_loss - self.min_delta:
             self.best_loss = current_loss
             self.patience_counter = 0
-            return False  # 继续训练
+            return False
         else:
             self.patience_counter += 1
             if self.patience_counter >= self.patience:
                 self.should_stop = True
-                return True  # 建议停止训练
+                return True 
             return False
     
     def reset(self):
-        """重置计数器，用于开始新阶段"""
         self.best_loss = float('inf')
         self.patience_counter = 0
         self.should_stop = False
